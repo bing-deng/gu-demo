@@ -1,6 +1,6 @@
 # NextJS and NextUI Dashboard Sample
 
-You can deploy here directly to vercel [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/chris-trapstar/nextui-dashboard)
+You can deploy here directly to vercel [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/bing-deng/gu-demo)
 
 This is a sample for NextJS and NextUI. 
 
