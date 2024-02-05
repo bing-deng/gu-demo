@@ -1,6 +1,7 @@
 import {Button, Divider, Input, Modal, Text} from '@nextui-org/react';
 import React from 'react';
 import {Flex} from '../styles/flex';
+import { Textarea } from '@nextui-org/react';
 
 export const AddUser = () => {
    const [visible, setVisible] = React.useState(false);
@@ -14,7 +15,7 @@ export const AddUser = () => {
    return (
       <div>
          <Button auto onClick={handler}>
-            Add User
+         ニュース登録
          </Button>
          <Modal
             closeButton
@@ -25,7 +26,7 @@ export const AddUser = () => {
          >
             <Modal.Header css={{justifyContent: 'start'}}>
                <Text id="modal-title" h4>
-                  Add new user
+               ニュース登録
                </Text>
             </Modal.Header>
             <Divider css={{my: '$5'}} />
@@ -46,21 +47,14 @@ export const AddUser = () => {
                      }}
                   >
                      <Input
-                        label="First Name"
+                        label="ニュースの概要"
                         bordered
                         clearable
                         fullWidth
                         size="lg"
-                        placeholder="First Name"
+
                      />
-                     <Input
-                        label="Last Name"
-                        clearable
-                        bordered
-                        fullWidth
-                        size="lg"
-                        placeholder="Last Name"
-                     />
+                  
                   </Flex>
 
                   <Flex
@@ -70,53 +64,22 @@ export const AddUser = () => {
                         '@lg': {flexWrap: 'nowrap'},
                      }}
                   >
-                     <Input
-                        label="Email"
-                        clearable
+                   
+                  <Textarea
+                        label="詳細情報"
                         bordered
                         fullWidth
                         size="lg"
-                        placeholder="Email"
-                     />
-                     <Input
-                        label="Phone Number"
-                        clearable
-                        bordered
-                        fullWidth
-                        size="lg"
-                        placeholder="Phone Number"
-                     />
-                  </Flex>
-                  <Flex
-                     css={{
-                        'gap': '$10',
-                        'flexWrap': 'wrap',
-                        '@lg': {flexWrap: 'nowrap'},
-                     }}
-                  >
-                     <Input
-                        label="Department"
-                        clearable
-                        bordered
-                        fullWidth
-                        size="lg"
-                        placeholder="Department"
-                     />
-                     <Input
-                        label="Company"
-                        clearable
-                        bordered
-                        fullWidth
-                        size="lg"
-                        placeholder="Company"
-                     />
+                        //  color="secondary"
+                        
+                  />
                   </Flex>
                </Flex>
             </Modal.Body>
             <Divider css={{my: '$5'}} />
             <Modal.Footer>
                <Button auto onClick={closeHandler}>
-                  Add User
+                 登録
                </Button>
             </Modal.Footer>
          </Modal>

@@ -12,7 +12,8 @@ import {SettingsIcon} from '../icons/sidebar/settings-icon';
 import {Flex} from '../styles/flex';
 import {TableWrapper} from '../table/table';
 import {AddUser} from './add-user';
-
+import { Grid, Loading } from '@nextui-org/react';
+import { styled } from '@nextui-org/react';
 export const Accounts = () => {
    return (
       <Flex
@@ -38,7 +39,7 @@ export const Accounts = () => {
 
             <Crumb>
                <UsersIcon />
-               <CrumbLink href="#">Users</CrumbLink>
+               <CrumbLink href="#">Contract</CrumbLink>
                <Text>/</Text>
             </Crumb>
             <Crumb>
@@ -46,7 +47,7 @@ export const Accounts = () => {
             </Crumb>
          </Breadcrumbs>
 
-         <Text h3>All Accounts</Text>
+         <Text h3>契約一覧</Text>
          <Flex
             css={{gap: '$8'}}
             align={'center'}
@@ -61,20 +62,30 @@ export const Accounts = () => {
                }}
                align={'center'}
             >
-               <Input
+               {/* <Input
                   css={{width: '100%', maxW: '410px'}}
-                  placeholder="Search users"
-               />
-               <SettingsIcon />
-               <TrashIcon />
+                  placeholder="ユーザーの検索"
+               /> */}
+               {/* <Input
+                        clearable
+                        contentRightStyling={false}
+                        placeholder="ユーザーの検索"
+                        contentRight={
+                        <SendButton>
+                           <SendIcon />
+                        </SendButton>
+                        }
+                     /> */}
+               {/* <SettingsIcon /> */}
+               {/* <TrashIcon />
                <InfoIcon />
-               <DotsIcon />
+               <DotsIcon /> */}
             </Flex>
             <Flex direction={'row'} css={{gap: '$6'}} wrap={'wrap'}>
-               <AddUser />
-               <Button auto iconRight={<ExportIcon />}>
+               {/* <AddUser /> */}
+               {/* <Button auto iconRight={<ExportIcon />}>
                   Export to CSV
-               </Button>
+               </Button> */}
             </Flex>
          </Flex>
 

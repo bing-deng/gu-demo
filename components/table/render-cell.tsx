@@ -1,4 +1,4 @@
-import {Col, Row, User, Text, Tooltip} from '@nextui-org/react';
+import {Col, Row, User, Text, Tooltip, Badge, Grid} from '@nextui-org/react';
 import React from 'react';
 import {DeleteIcon} from '../icons/table/delete-icon';
 import {EditIcon} from '../icons/table/edit-icon';
@@ -12,6 +12,15 @@ interface Props {
 }
 
 export const RenderCell = ({user, columnKey}: Props) => {
+   // 根据用户状态决定颜色
+   const getColor = (status: string) => {
+      switch (status) {
+     case '支払済':
+       return 'success';
+     default:
+       return 'warning';
+   }
+}
    // @ts-ignore
    const cellValue = user[columnKey];
    switch (columnKey) {
@@ -26,7 +35,7 @@ export const RenderCell = ({user, columnKey}: Props) => {
             <Col>
                <Row>
                   <Text b size={14} css={{tt: 'capitalize'}}>
-                     {cellValue}
+                     {/* {cellValue} */}
                   </Text>
                </Row>
                <Row>
@@ -42,8 +51,19 @@ export const RenderCell = ({user, columnKey}: Props) => {
          );
       case 'status':
          return (
-            // @ts-ignore
-            <StyledBadge type={String(user.status)}>{cellValue}</StyledBadge>
+
+                <Grid.Container gap={0.5}>
+
+                  <Grid xs={12} alignItems="center">
+                  <Badge color={getColor(user.status)} variant="dot" />
+
+
+                  <Text css={{ ml: "$2" }}> {user.status}</Text>
+                  </Grid>
+               </Grid.Container>
+
+
+       
          );
 
       case 'actions':
@@ -54,7 +74,7 @@ export const RenderCell = ({user, columnKey}: Props) => {
                css={{'gap': '$8', '@md': {gap: 0}}}
             >
                <Col css={{d: 'flex'}}>
-                  <Tooltip content="Details">
+                  <Tooltip content="詳細">
                      <IconButton
                         onClick={() => console.log('View user', user.id)}
                      >
@@ -63,7 +83,7 @@ export const RenderCell = ({user, columnKey}: Props) => {
                   </Tooltip>
                </Col>
                <Col css={{d: 'flex'}}>
-                  <Tooltip content="Edit user">
+                  <Tooltip content="ユーザーを編集">
                      <IconButton
                         onClick={() => console.log('Edit user', user.id)}
                      >
@@ -73,7 +93,7 @@ export const RenderCell = ({user, columnKey}: Props) => {
                </Col>
                <Col css={{d: 'flex'}}>
                   <Tooltip
-                     content="Delete user"
+                     content="ユーザーを削除"
                      color="error"
                      onClick={() => console.log('Delete user', user.id)}
                   >
