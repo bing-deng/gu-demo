@@ -6,7 +6,7 @@ import {RenderCellNews} from './render-cell-news';
 import { Input, Button } from '@nextui-org/react';
 import React, { useState } from 'react';
 import {Flex} from '../styles/flex';
-import {AddUser} from '../accounts/add-user';
+import {AddUser} from '../news/add-user';
 import {Spacer} from "@nextui-org/react";
 import { useEffect } from 'react';
 
