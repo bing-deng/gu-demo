@@ -110,7 +110,7 @@ export const users = [
       team: '個人',
       status: '未納',
       age: '25',
-      avatar: 'https://cdn.vectorstock.com/i/1000x1000/82/06/avatar-of-a-japanese-character-vector-46438188.webp',
+      avatar: 'https://cdn.vectorstock.com/i/1000x1000/81/88/avatar-of-a-japanese-character-vector-46438188.webp',
       email: 'zoey.lang@example.com',
       phone :'088-7363-8785',
       address : "千葉県松戸市29-978"
@@ -123,7 +123,7 @@ export const users = [
       team: '個人',
       status: '未納',
       age: '28',
-      avatar: 'https://cdn.vectorstock.com/i/1000x1000/82/06/avatar-of-a-japanese-character-vector-46438188.webp',
+      avatar: 'https://cdn.vectorstock.com/i/1000x1000/82/06/avatar-of-a-japanese-character-vector-46438206.webp',
       email: 'william.howard@example.com',
       phone :'088-7363-8785',
       address : "千葉県市川市827-448"
