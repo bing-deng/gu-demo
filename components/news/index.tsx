@@ -11,10 +11,9 @@ import {UsersIcon} from '../icons/breadcrumb/users-icon';
 import {SettingsIcon} from '../icons/sidebar/settings-icon';
 import {Flex} from '../styles/flex';
 import {TableWrapper} from '../table/table';
-import {AddUser} from './add-user';
 import { Grid, Loading } from '@nextui-org/react';
 import { styled } from '@nextui-org/react';
-export const Accounts = () => {
+export const NewsPage = () => {
    return (
       <Flex
          css={{
@@ -47,7 +46,7 @@ export const Accounts = () => {
             </Crumb>
          </Breadcrumbs> */}
 
-         <Text h3>契約一覧</Text>
+         <Text h3>News一覧</Text>
          <Flex
             css={{gap: '$8'}}
             align={'center'}

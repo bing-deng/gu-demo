@@ -15,7 +15,7 @@ export const TwoFactorAuthPage = () => {
 
     console.log(phoneNumber, verificationCode);
     // 假设验证成功
-    router.push('/accounts');
+    router.push('/news');
   };
 
   return (

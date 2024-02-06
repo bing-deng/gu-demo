@@ -3,6 +3,7 @@ import React from 'react';
 import {DarkModeSwitch} from './darkmodeswitch';
 
 export const UserDropdown = () => {
+   
    return (
       <Dropdown placement="bottom-right">
          <Navbar.Item>
@@ -12,36 +13,23 @@ export const UserDropdown = () => {
                   as="button"
                   color="secondary"
                   size="md"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                  src="https://cdn.vectorstock.com/i/1000x1000/82/06/avatar-of-a-japanese-character-vector-46438206.webp"
                />
             </Dropdown.Trigger>
          </Navbar.Item>
          <Dropdown.Menu
             aria-label="User menu actions"
-            onAction={(actionKey) => console.log({actionKey})}
+            onAction={(actionKey) => {
+               console.log({actionKey});
+               if (actionKey === 'logout') {
+                  window.location.href = '/'; // 将页面重定向到首页
+
+               }
+            }}
          >
-            <Dropdown.Item key="profile" css={{height: '$18'}}>
-               <Text b color="inherit" css={{d: 'flex'}}>
-                  Signed in as
-               </Text>
-               <Text b color="inherit" css={{d: 'flex'}}>
-                  zoey@example.com
-               </Text>
-            </Dropdown.Item>
-            <Dropdown.Item key="settings" withDivider>
-               My Settings
-            </Dropdown.Item>
-            <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
-            <Dropdown.Item key="analytics" withDivider>
-               Analytics
-            </Dropdown.Item>
-            <Dropdown.Item key="system">System</Dropdown.Item>
-            <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
-            <Dropdown.Item key="help_and_feedback" withDivider>
-               Help & Feedback
-            </Dropdown.Item>
+
             <Dropdown.Item key="logout" withDivider color="error">
-               Log Out
+               ログアウト
             </Dropdown.Item>
             <Dropdown.Item key="switch" withDivider>
                <DarkModeSwitch />
