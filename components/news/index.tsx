@@ -10,7 +10,7 @@ import {HouseIcon} from '../icons/breadcrumb/house-icon';
 import {UsersIcon} from '../icons/breadcrumb/users-icon';
 import {SettingsIcon} from '../icons/sidebar/settings-icon';
 import {Flex} from '../styles/flex';
-import {TableWrapper} from '../table/table';
+import {TableWrapperNews} from '../table_news/table';
 import { Grid, Loading } from '@nextui-org/react';
 import { styled } from '@nextui-org/react';
 export const NewsPage = () => {
@@ -46,7 +46,7 @@ export const NewsPage = () => {
             </Crumb>
          </Breadcrumbs> */}
 
-         <Text h3>News一覧</Text>
+         <Text h3>水道局からのNews一覧</Text>
          <Flex
             css={{gap: '$8'}}
             align={'center'}
@@ -88,7 +88,7 @@ export const NewsPage = () => {
             </Flex>
          </Flex>
 
-         <TableWrapper />
+         <TableWrapperNews />
       </Flex>
    );
 };

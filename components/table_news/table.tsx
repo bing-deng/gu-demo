@@ -1,20 +1,20 @@
 import {Table} from '@nextui-org/react';
 
 import {Box} from '../styles/box';
-import {columns, users} from './data';
-import {RenderCell} from './render-cell';
+import {columns, users_news} from './data-news';
+import {RenderCellNews} from './render-cell-news';
 import { Input, Button } from '@nextui-org/react';
 import React, { useState } from 'react';
 import {Flex} from '../styles/flex';
 import {AddUser} from '../accounts/add-user';
 import {Spacer} from "@nextui-org/react";
 
-export const TableWrapper = () => {
+export const TableWrapperNews = () => {
 
      // 搜索框的状态
   const [searchTerm, setSearchTerm] = useState('');
    // 过滤后的用户列表
-   const [filteredUsers, setFilteredUsers] = useState(users);
+   const [filteredUsers, setFilteredUsers] = useState(users_news);
 
      // 搜索用户的函数
   const handleSearch = (event: any) => {
@@ -22,7 +22,7 @@ export const TableWrapper = () => {
    
    setSearchTerm(value);
    // || user.role.toLowerCase().includes(value)
-   const filtered = users.filter(user => user.name.toLowerCase().includes(value) || user.phone.toLowerCase().includes(value) );
+   const filtered = users_news.filter(user => user.name.toLowerCase().includes(value) || user.phone.toLowerCase().includes(value) );
 
    console.log("filtered",filtered);
    setFilteredUsers(filtered);
@@ -50,16 +50,16 @@ export const TableWrapper = () => {
                }}
                align={'center'}
             >
-               <Input　 clearable
+               {/* <Input　 clearable
 
                   css={{width: '100%', maxW: '410px'}}
                   onChange={handleSearch}
                   value={searchTerm}
                   placeholder="ユーザーの検索"
-               />
+               /> */}
             </Flex>
             <Flex direction={'row'} css={{gap: '$6'}} wrap={'wrap'}>
-               {/* <AddUser /> */}
+               <AddUser />
                {/* <Button auto iconRight={<ExportIcon />}>
                   Export to CSV
                </Button> */}
@@ -75,7 +75,7 @@ export const TableWrapper = () => {
                width: '100%',
                px: 0,
             }}
-            selectionMode="multiple"
+            // selectionMode="multiple"
          >
             <Table.Header columns={columns}>
                {(column) => (
@@ -93,7 +93,8 @@ export const TableWrapper = () => {
                   <Table.Row>
                      {(columnKey) => (
                         <Table.Cell>
-                           {RenderCell({user: item, columnKey: columnKey})}
+                           {RenderCellNews({user: item, columnKey: columnKey})}
+                           
                         </Table.Cell>
                      )}
                   </Table.Row>
