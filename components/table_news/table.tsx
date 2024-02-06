@@ -18,7 +18,7 @@ export const TableWrapperNews = () => {
 
       useEffect(() => {
          const fetchData = async () => {
-            const response = await fetch('http://127.0.0.1:8001/newsList');
+            const response = await fetch('https://demo.grandchallenge.co.jp/newsList');
             const data = await response.json();
             console.log(data);
             // 假设返回的数据是一个数组

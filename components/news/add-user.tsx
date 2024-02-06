@@ -13,10 +13,30 @@ export const AddUser = () => {
    };
    const [title, setTitle] = React.useState('');
    const [content, setContent] = React.useState('');
+   const [titleValid, setTitleValid] = React.useState(true); // 默认为true，表示没有错误
+   const [contentValid, setContentValid] = React.useState(true);
+
+   
+    
    const submitNews = async () => {
-      console.log("response")
+      // 检查字段是否为空
+      const isTitleValid = title.trim() !== '';
+      const isContentValid = content.trim() !== '';
+   
+      // 更新验证状态
+      setTitleValid(isTitleValid);
+      setContentValid(isContentValid);
+   
+      // 如果任何字段无效，停止提交
+      if (!isTitleValid || !isContentValid) {
+         console.error('Validation failed');
+         setTitleValid(false);
+         setContentValid(false);
+         return;
+         }
+
       try {
-        const response = await fetch("http://127.0.0.1:8001/news", {
+        const response = await fetch("https://demo.grandchallenge.co.jp/news", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -34,7 +54,8 @@ export const AddUser = () => {
         // 请求成功，关闭模态窗口
         console.log('News submitted successfully');
         setVisible(false);
-    
+        window.location.reload();
+
         // 通知列表刷新数据
         // 这里的实现取决于你的应用架构
         // 例如，你可以调用父组件传递的回调函数，或使用全局状态管理工具触发数据刷新
@@ -85,6 +106,8 @@ export const AddUser = () => {
                      fullWidth
                      size="lg"
                      value={title}
+                     css={{ borderColor: titleValid ? undefined : '$red600' }} // 如果titleValid为false，则显示红色边框
+
                      onChange={(e) => setTitle(e.target.value)}
                      />
                   
@@ -98,11 +121,13 @@ export const AddUser = () => {
                      }}
                   >
                 <Textarea
-                  label="詳細情報www"
+                  label="詳細情報"
                   bordered
                   fullWidth
                   size="lg"
                   value={content}
+                  css={{ borderColor: contentValid ? undefined : '$red600' }} // 如果contentValid为false，则显示红色边框
+
                   onChange={(e) => setContent(e.target.value)}
                   />
                   </Flex>
@@ -111,7 +136,7 @@ export const AddUser = () => {
             <Divider css={{my: '$5'}} />
             <Modal.Footer>
                <Button auto onClick={submitNews}>
-                 登録2
+                 登録
                </Button>
             </Modal.Footer>
          </Modal>

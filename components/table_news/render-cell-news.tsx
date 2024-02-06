@@ -16,7 +16,7 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
 
    const deleteNews = async (newsId: string) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8001/news/${newsId}`, {
+        const response = await fetch(`https://demo.grandchallenge.co.jp/news/${newsId}`, {
           method: 'DELETE',  // 使用DELETE方法
           // 这里可以添加任何需要的headers，例如Content-Type或Authorization
         });
