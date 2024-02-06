@@ -69,29 +69,9 @@ export const NavbarWrapper = ({children}: Props) => {
                   width: '100%',
                }}
             >
-               <Input
-                  clearable
-                  contentLeft={
-                     <SearchIcon
-                        fill="var(--nextui-colors-accents6)"
-                        size={16}
-                     />
-                  }
-                  contentLeftStyling={false}
-                  css={{
-                     'w': '100%',
-                     'transition': 'all 0.2s ease',
-                     '@xsMax': {
-                        w: '100%',
-                        // mw: '300px',
-                     },
-                     '& .nextui-input-content--left': {
-                        h: '100%',
-                        ml: '$4',
-                        dflex: 'center',
-                     },
-                  }}
-                  placeholder="Search..."
+               <div
+
+                 
                />
             </Navbar.Content>
             <Navbar.Content>

@@ -7,10 +7,22 @@ import {users_news} from './data-news';
 import {IconButton, StyledBadge} from './table.styled';
 // import {Divider, Spacer} from "@nextui-org/react";
 
+
+
+interface UserModel {
+   [key: string]: any; // 使用索引签名允许任意属性
+   title: string;
+   content: string;
+   time: string;
+ }
+ 
+
 interface Props {
-   user: typeof users_news[number];
+   user: UserModel;
    columnKey: string | React.Key;
+   
 }
+
 
 export const RenderCellNews = ({user, columnKey}: Props) => {
 
@@ -45,7 +57,8 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
    }
 }
    // @ts-ignore
-   const cellValue = user[columnKey];
+   const cellValue:string = user[columnKey];
+
    switch (columnKey) {
      
       case 'title':

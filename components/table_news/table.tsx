@@ -10,6 +10,12 @@ import {AddUser} from '../news/add-user';
 import {Spacer} from "@nextui-org/react";
 import { useEffect } from 'react';
 
+interface UserModel {
+   [key: string]: any; // 使用索引签名允许任意属性
+   title: string;
+   content: string;
+   time: string;
+ }
 export const TableWrapperNews = () => {
 
       const [searchTerm, setSearchTerm] = useState('');
@@ -36,10 +42,10 @@ export const TableWrapperNews = () => {
    
    setSearchTerm(value);
    // || user.role.toLowerCase().includes(value)
-   const filtered = users_news.filter(user => user.name.toLowerCase().includes(value) || user.phone.toLowerCase().includes(value) );
+   // const filtered = users_news.filter(user => user.name.toLowerCase().includes(value) || user.phone.toLowerCase().includes(value) );
 
-   console.log("filtered",filtered);
-   setFilteredUsers(filtered);
+   // console.log("filtered",filtered);
+   // setFilteredUsers(filtered);
  };
 
    return (
