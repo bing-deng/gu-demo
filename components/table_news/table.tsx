@@ -8,13 +8,27 @@ import React, { useState } from 'react';
 import {Flex} from '../styles/flex';
 import {AddUser} from '../accounts/add-user';
 import {Spacer} from "@nextui-org/react";
+import { useEffect } from 'react';
 
 export const TableWrapperNews = () => {
 
-     // 搜索框的状态
-  const [searchTerm, setSearchTerm] = useState('');
-   // 过滤后的用户列表
-   const [filteredUsers, setFilteredUsers] = useState(users_news);
+      const [searchTerm, setSearchTerm] = useState('');
+      const [filteredUsers, setFilteredUsers] = useState(users_news);
+
+
+      useEffect(() => {
+         const fetchData = async () => {
+            const response = await fetch('http://127.0.0.1:8001/newsList');
+            const data = await response.json();
+            console.log(data);
+            // 假设返回的数据是一个数组
+            setFilteredUsers(data);
+         };
+
+         fetchData().catch(console.error);
+   }, []); // 空依赖数组意味着这个effect只在组件加载时运行一次
+
+  
 
      // 搜索用户的函数
   const handleSearch = (event: any) => {

@@ -13,6 +13,28 @@ interface Props {
 }
 
 export const RenderCellNews = ({user, columnKey}: Props) => {
+
+   const deleteNews = async (newsId: string) => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8001/news/${newsId}`, {
+          method: 'DELETE',  // 使用DELETE方法
+          // 这里可以添加任何需要的headers，例如Content-Type或Authorization
+        });
+        if (response.ok) {
+          // 请求成功，重新加载页面
+          console.log('News deleted successfully');
+          window.location.reload();
+        } else {
+          // 处理错误情况（例如显示错误消息）
+          console.error('Failed to delete news');
+        }
+      } catch (error) {
+        // 捕获并处理网络错误
+        console.error('Error deleting news:', error);
+      }
+    };
+
+    
    // 根据用户状态决定颜色
    const getColor = (status: string) => {
       switch (status) {
@@ -26,12 +48,14 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
    const cellValue = user[columnKey];
    switch (columnKey) {
      
-      case 'role':
+      case 'title':
          return (
             <Col>
                <Row>
                   <Text b size={14} css={{tt: 'capitalize'}}>
-                     {cellValue}
+
+                     {cellValue.length > 50 ? cellValue.slice(0, 50) + '...' : cellValue}
+
                   </Text>
                </Row>
                <Row>
@@ -40,14 +64,31 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
                      size={13}
                      css={{tt: 'capitalize', color: '$accents7'}}
                   >
-                     {user.team}
+                     {user.content.length > 50 ? user.content.slice(0, 50) + '...' : user.content}
+
                   </Text>
                </Row>
               
 
             </Col>
          );
-
+         case 'time':
+            return (
+               <Col>
+                  <Row>
+                     <Text
+                        b
+                        size={13}
+                        css={{tt: 'capitalize', color: '$accents7'}}
+                     >
+                        {cellValue}
+                     </Text>
+                  </Row>
+                 
+   
+               </Col>
+            );
+   
       case 'actions':
          return (
             <Row
@@ -55,7 +96,7 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
                align="center"
                css={{'gap': '$8', '@md': {gap: 0}}}
             >
-               <Col css={{d: 'flex'}}>
+               {/* <Col css={{d: 'flex'}}>
                   <Tooltip content="詳細">
                      <IconButton
                         onClick={() => console.log('View user', user.id)}
@@ -65,19 +106,20 @@ export const RenderCellNews = ({user, columnKey}: Props) => {
                   </Tooltip>
                </Col>
                <Col css={{d: 'flex'}}>
-                  <Tooltip content="ユーザーを編集">
+                  <Tooltip content="ニュース編集">
                      <IconButton
                         onClick={() => console.log('Edit user', user.id)}
                      >
                         <EditIcon size={20} fill="#979797" />
                      </IconButton>
                   </Tooltip>
-               </Col>
+               </Col> */}
                <Col css={{d: 'flex'}}>
                   <Tooltip
-                     content="ユーザーを削除"
+                     content="ニュース削除"
                      color="error"
-                     onClick={() => console.log('Delete user', user.id)}
+                     onClick={() => deleteNews(user.id)}  // 调用deleteNews函数，传入新闻的ID
+
                   >
                      <IconButton>
                         <DeleteIcon size={20} fill="#FF0080" />
